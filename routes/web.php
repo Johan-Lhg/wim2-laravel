@@ -18,16 +18,7 @@ Route::view('a-propos', 'a-propos');
  return "Salut $name";
 });
 
-Route::get('/clients', function () {
- $clientsMock = [
- 'Jean1',
- 'Marc1',
- 'Virginie1',
- ];
- return view('clients.index', [
- 'clients' => $clientsMock
- ]);
-});
+Route::get('/clients', 'ClientsController@index');
 
 Auth::routes();
 
