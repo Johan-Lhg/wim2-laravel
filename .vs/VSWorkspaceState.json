@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\database"
+    "\\database",
+    "\\database\\migrations"
   ],
+  "SelectedNode": "\\.gitattributes",
   "PreviewInSolutionExplorer": false
 }
