@@ -13,6 +13,11 @@ class ClientsController extends Controller
          'clients' => $clients
          ]);
     }
+ 
+    public function scopeActifs($query)
+    {
+        return $query->where('status', 1);
+    }
 
     public function store()
     {
@@ -30,5 +35,6 @@ class ClientsController extends Controller
         $client->status = $status;
         $client->save();
         return back();
-    }
+    }
+
 }
