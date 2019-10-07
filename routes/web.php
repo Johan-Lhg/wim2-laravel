@@ -11,11 +11,24 @@
 |
 */
 
-Route::view('/', 'welcome');
-Route::view('contact', 'contact');
-Route::view('a-propos', 'a-propos');
-Route::get('/salut/{name}', function ($name) {
- return "Salut $name";
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/a-propos', function () {
+    return view('a-propos');
+});
+
+Route::get('/salut/{name}', function ($name) {
+    return "Salut $name";
+});
+
+Route::get('/clients', function () {
+ return view('clients.index');
 });
 
 Route::get('/clients', 'ClientsController@index');
@@ -24,14 +37,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('clients', 'ClientsController@store');
+?>
