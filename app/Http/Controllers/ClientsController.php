@@ -8,20 +8,16 @@ use App\Client;
 class ClientsController extends Controller
 {
     public function index(){
-         $clients = Client::where('status', 1)->get();
+         $clients = Client::actifs()->get();
          return view('clients.index', [
          'clients' => $clients
          ]);
     }
  
-    public function scopeActifs($query)
-    {
-        return $query->where('status', 1);
-    }
 
     public function store()
     {
-        request()->validate([
+        $data = request()->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
             'status' => 'required',
@@ -30,11 +26,12 @@ class ClientsController extends Controller
         $email = request('email');
         $status = request('status');
         $client = new Client();
-        $client->name = $name;
-        $client->email = $email;
-        $client->status = $status;
-        $client->save();
+        Client::create($data);
         return back();
     }
 
+    public function show(Client $client)
+    {
+        return view('clients.show', compact('client'));
+    }
 }

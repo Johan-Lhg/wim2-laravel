@@ -3,7 +3,7 @@
 @section('content')<div class="container">
 <ul>
      @foreach ($clients as $client)
-     <li>{{ $client->name }}</li>
+     <li> <a href="/clients/{{ $client->id }}">{{ $client->name }}</a></li>
      @endforeach
 </ul>
 <h2>Nouveau Client</h2>

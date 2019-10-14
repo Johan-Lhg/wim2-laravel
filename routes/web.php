@@ -33,9 +33,17 @@ Route::get('/clients', function () {
 
 Route::get('/clients', 'ClientsController@index');
 
+Route::get('/clients/{client}', 'ClientsController@show');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('clients', 'ClientsController@store');
+Route::post('clients', 'ClientsController@store');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 ?>
